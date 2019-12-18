@@ -39,45 +39,35 @@
 
 	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fbf2e2;">
     <div class="container">
-  <a class="navbar-brand" href="<?php echo base_url(); ?>"><img src="<?php echo site_url();?>assets/images/shato-logo.svg"></a>
+      <a class="navbar-brand" href="<?php echo base_url(); ?>"><img src="<?php echo site_url();?>assets/images/shato-logo.svg"></a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <div class="collapse navbar-collapse" id="navbarColor01">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item text-center">
-           <a class="nav-link" href="<?php echo base_url(); ?>">Главная <span class="sr-only">(current)</span></a>
-        <div class="li-shell">
-        </div>
-      </li>
-      <li class="nav-item text-center">
-          <a class="nav-link" href="<?php echo base_url(); ?>about">О нас</a>
-        <div class="li-shell">
-        </div>
-      </li>
-      <li class="nav-item text-center">
-          <a class="nav-link" href="<?php echo base_url(); ?>contacts">Контакты</a>
-        <div class="li-shell">
-        </div>
-      </li>
-      
-    </ul>
-    <ul class="navbar-nav">
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item text-center">
+              <a class="nav-link" href="<?php echo base_url(); ?>">Главная <span class="sr-only">(current)</span></a>
+            <div class="li-shell">
+            </div>
+          </li>
+          <li class="nav-item text-center">
+              <a class="nav-link" href="<?php echo base_url(); ?>about">О нас</a>
+            <div class="li-shell">
+            </div>
+          </li>
+          <li class="nav-item text-center">
+              <a class="nav-link" href="<?php echo base_url(); ?>contacts">Контакты</a>
+            <div class="li-shell">
+            </div>
+          </li>
+          
+        </ul>
+        <ul class="navbar-nav"></ul>
+      </div>
+    </div>
+    </nav>
 
-      
-      <?php if (!$this->session->userdata('logged_in')): ?>
-        
-      <?php endif ?>
-     <?php if ($this->session->userdata('logged_in')): ?>
-        
-     <?php endif ?>
-      
-    </ul>
-  </div>
-</div>
-</nav>
-
-<div class="container mt-2">
+    <div class="container mt-2">
 	

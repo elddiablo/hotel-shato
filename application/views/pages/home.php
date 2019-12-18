@@ -1,5 +1,8 @@
 <div class="home">
 	<div class="row">
+    <div class="col-12" id="adv_section">
+    <i class="fas fa-exclamation-triangle"></i><span>У нас открылась <a href="<?php echo base_url(); ?>steamroom">Баня!!!</a></span><i class="fas fa-exclamation-triangle"></i>  
+    </div>
 		<div class="col-12 p-0">
 			<div class="owl-carousel owl-carousel-home">
 				<div class="carousel-home-item " id="home-item">

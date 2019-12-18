@@ -2,112 +2,105 @@
 
 	class Pages extends CI_Controller{
 
-		public function view($page = "home"){
+    public function view($page = "home") {
+      $data = null;
 
-			switch ($page) {
-					case $page == 'rooms':
-						$data['title'] = 'Типы Комнат';
-						$data['page'] = $this->page_model->findPageContent($page);
-						break;
-					
-					case $page == 'about':
-						$data['title'] = 'Про нас';
-						$data['is_slider'] = true;
-						$data['page'] = $this->page_model->findPageContent($page);
+      switch ($page) {
+        case 'rooms':
+          $data['title'] = 'Типы Комнат';
+          $data['page'] = $this->page_model->findPageContent($page);
+          break;
+        
+        case 'about':
+          $data['title'] = 'Про нас';
+          $data['is_slider'] = true;
+          $data['page'] = $this->page_model->findPageContent($page);
+          break;
 
-						break;
+        case 'contacts':
+          $data['title'] = 'Наши Контакты';
+          $data['is_slider'] = false;
+          $data['page'] = $this->page_model->findPageContent($page);
+          break;
 
-					case $page == 'contacts':
-						$data['title'] = 'Наши Контакты';
-						$data['is_slider'] = false;
-						
-		                
-						$data['page'] = $this->page_model->findPageContent($page);
+        case 'kitchen':
+          $data['title'] = 'Кухня';
+          $data['is_slider'] = true;
+          $data['page'] = $this->page_model->findPageContent($page);
+          break;
 
-						break;
+        case 'territory':
+          $data['title'] = 'Территория';
+          $data['is_slider'] = true;
+          $data['page'] = $this->page_model->findPageContent($page);
+          break;
 
-					case $page == 'kitchen':
-						$data['title'] = 'Кухня';
-						$data['is_slider'] = true;
-						$data['page'] = $this->page_model->findPageContent($page);
-						
-						
+        case 'occasions':
+          $data['title'] = 'Мероприятия';
+          $data['is_slider'] = true;
+          $data['page'] = $this->page_model->findPageContent($page);
+          break;
 
-						break;
+        case 'advantages':
+          $data['title'] = 'Преимущества';
+          $data['page'] = NULL;
+          break;
 
-					case $page == 'territory':
-						$data['title'] = 'Территория';
-						$data['is_slider'] = true;
-						$data['page'] = $this->page_model->findPageContent($page);
+        case 'gallery':
+          $data['title'] = 'Галерея';
+          $data['page'] = $this->page_model->findPageContent($page);
+          break;
+        
+        case 'steamroom':
+          $data['title'] = "Баня";
+          $data['is_slider'] = true;
+          $data['page'] = $this->page_model->findPageContent($page);
+          break;
 
+        default:
+          $data['title'] = NULL;
+          $data['page'] = $this->page_model->findPageContent($page);
+          break;
+    }
 
-						break;
+      // Load header
+      $this->load->view('templates/header');
 
-					case $page == 'occasions':
-						$data['title'] = 'Мероприятия';
-						$data['is_slider'] = true;
-						$data['page'] = $this->page_model->findPageContent($page);
+      if (is_object($data['page']) && !empty($data['page'])) {
+        $page_id = (int)$data['page']->id;
+      } else {
+        $page_id = (int)$data['page']['id'];
+      }
+        
+      $data['points'] = $this->page_model->findPagePointsByPageID($page_id);
 
-
-						break;
-
-					case $page == 'advantages':
-						$data['title'] = 'Преимущества';
-						$data['page'] = NULL;
-						break;
-
-					case $page == 'gallery':
-						$data['title'] = 'Галерея';
-						$data['page'] = $this->page_model->findPageContent($page);
-						break;
-
-					default:
-						$data['title'] = NULL;
-						$data['page'] = $this->page_model->findPageContent($page);
-						break;
-				}
-
-			
-
-				
-
-				// Load header
-				$this->load->view('templates/header');
-
-				if (is_object($data['page']) && !empty($data['page'])) {
-					$page_id = (int)$data['page']->id;
-				} else {
-					$page_id = (int)$data['page']['id'];
-				}
-				 
-				$data['points'] = $this->page_model->findPagePointsByPageID($page_id);
-
-				if($page){
-					$data['images'] = $this->sortArrayImages($this->page_model->findPageImagesByPageID($page_id));
-				} 
-				
+      if($page){
+        $data['images'] = $this->sortArrayImages($this->page_model->findPageImagesByPageID($page_id));
+      } 
+      
 
 
-				// Load the room page or the index page 
-				if ($page == 'rooms' || $page == 'home' || $page == 'advantages' || $page == 'gallery' || $page == 'contacts') {
-					// Load the page content from the database
+      // Load the room page or the index page 
+      if ($page == 'rooms' 
+      || $page == 'home' 
+      || $page == 'advantages' 
+      || $page == 'gallery' 
+      || $page == 'contacts') {
+        // Load the page content from the database
+        $this->load->view('pages/'. $page, $data);
+      } else {
+        $this->load->view('pages/index', $data);
+      }
 
-					$this->load->view('pages/'. $page, $data);
-				} else {
-					$this->load->view('pages/index', $data);
-				}
-
-				// Load footer
-				$this->load->view('templates/footer');
-
-			
-		}
+      // Load footer
+      $this->load->view('templates/footer');
+    }
 
 		public function edit($page_name){
 
 				if (!$this->user_model->isLoggedIn()) {
 
-				redirect('admin/login');
+				  redirect('admin/login');
 
 				} else {
 
@@ -132,9 +125,6 @@
 		}
 
 		public function delete_image($image_id){
-
-
-
 			if (!$this->user_model->isLoggedIn()) {
 					
 				redirect('admin/login');
