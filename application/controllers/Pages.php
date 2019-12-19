@@ -4,6 +4,7 @@
 
     public function view($page = "home") {
       $data = null;
+      $data['error'] = false;
 
       switch ($page) {
         case 'rooms':
@@ -57,44 +58,54 @@
           $data['page'] = $this->page_model->findPageContent($page);
           break;
 
-        default:
+        case 'home':
           $data['title'] = NULL;
+          $data['is_slider'] = false;
           $data['page'] = $this->page_model->findPageContent($page);
+        break;
+        default:
+          $data['error'] = true;
           break;
     }
 
-      // Load header
-      $this->load->view('templates/header');
+      if(!$data['error']) {
+        // Load header
+        $this->load->view('templates/header');
 
-      if (is_object($data['page']) && !empty($data['page'])) {
-        $page_id = (int)$data['page']->id;
-      } else {
-        $page_id = (int)$data['page']['id'];
-      }
+        if (is_object($data['page']) && !empty($data['page'])) {
+          $page_id = (int)$data['page']->id;
+        } else {
+          $page_id = (int)$data['page']['id'];
+        }
+          
+        $data['points'] = $this->page_model->findPagePointsByPageID($page_id);
+
+        if($page){
+          $data['images'] = $this->sortArrayImages($this->page_model->findPageImagesByPageID($page_id));
+        } 
         
-      $data['points'] = $this->page_model->findPagePointsByPageID($page_id);
-
-      if($page){
-        $data['images'] = $this->sortArrayImages($this->page_model->findPageImagesByPageID($page_id));
-      } 
-      
 
 
-      // Load the room page or the index page 
-      if ($page == 'rooms' 
-      || $page == 'home' 
-      || $page == 'advantages' 
-      || $page == 'gallery' 
-      || $page == 'contacts') {
-        // Load the page content from the database
-        $this->load->view('pages/'. $page, $data);
+        // Load the room page or the index page 
+        if ($page == 'rooms' 
+        || $page == 'home' 
+        || $page == 'advantages' 
+        || $page == 'gallery' 
+        || $page == 'contacts') {
+          // Load the page content from the database
+          $this->load->view('pages/'. $page, $data);
+        } else {
+          $this->load->view('pages/index', $data);
+        }
+
+        // Load footer
+        $this->load->view('templates/footer');
       } else {
-        $this->load->view('pages/index', $data);
+        $this->load->view('templates/header');
+        $this->load->view('templates/error_page');
+        $this->load->view('templates/footer');
       }
-
-      // Load footer
-      $this->load->view('templates/footer');
-    }
+    } 
 
 		public function edit($page_name){
 

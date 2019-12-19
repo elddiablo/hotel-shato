@@ -53,6 +53,14 @@ div #adv_section i {
   color: #FC574F;
   font-size: 1.4em;
 }
+
+.error-banner {
+  background-color: #fbf2e2;
+}
+
+.color-red {
+  color: #FC574F;
+}
 /* ================== END OF STANDART ====================================================== */
 
 
