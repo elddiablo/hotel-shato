@@ -56,7 +56,7 @@
 	          </div>
               <div class="col-md-4 col-sm-12 col-12 bg-custom-light-brown text-center menu-select" id="advantages">
 				<div class="shell">
-					<p class='hover-effect'><a href="<?php echo base_url(); ?>advantages"><i class="fas fa-thumbs-up"></i> Особенности</a></p>	
+					<p class='hover-effect'><a href="<?php echo base_url(); ?>steamroom"><i class="fas fa-bath"></i> Баня</a></p>	
 				</div>
               </div>
         </div>

@@ -25,6 +25,9 @@
               <a href="<?php echo base_url(); ?>pages/edit/territory">Территория</a>
             </li>
             <li>
+              <a href="<?php echo base_url(); ?>pages/edit/steamroom">Баня</a>
+            </li>
+            <li>
               <a href="<?php echo base_url(); ?>pages/edit/occasions">Мероприятия</a>
             </li>
             <li>
