@@ -54,7 +54,7 @@
 	              	<p class='hover-effect'><a href="<?php echo base_url(); ?>rooms"><i class="fas fa-home"></i> Номера</a></p>
 	              </div>
 	          </div>
-              <div class="col-md-4 col-sm-12 col-12 bg-custom-light-brown text-center menu-select" id="advantages">
+              <div class="col-md-4 col-sm-12 col-12 bg-custom-light-brown text-center menu-select" id="steamroom">
 				<div class="shell">
 					<p class='hover-effect'><a href="<?php echo base_url(); ?>steamroom"><i class="fas fa-bath"></i> Баня</a></p>	
 				</div>
@@ -87,8 +87,8 @@
 	    document.getElementById("rooms").onclick = function () {
 	        location.href = "rooms";
 	    };
-	    document.getElementById("advantages").onclick = function () {
-	        location.href = "advantages";
+	    document.getElementById("steamroom").onclick = function () {
+	        location.href = "steamroom";
 	    };
 	    document.getElementById("territory").onclick = function () {
 	        location.href = "territory";
