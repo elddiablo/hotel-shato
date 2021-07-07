@@ -57,11 +57,11 @@
 				<h3><label for="">Цена</label></h3>
 				<div class="row">
 					<div class="col-md-9">
-						<div class="form-group">
-							<input name="price" class="form-control" value = "<?= $room->price ?>">
-							<input type="hidden" name="room_type" value="<?php echo $room->type; ?>">
-							<input type="hidden" name="room_type_rus" value="<?php echo $room->type_rus; ?>">
-						</div>
+					<div class="form-group">
+						<textarea name="price" id="editor3" rows="5" class="form-control"><?= $room->price ?></textarea>
+						<input type="hidden" name="room_type" value="<?php echo $room->type; ?>">
+						<input type="hidden" name="room_type_rus" value="<?php echo $room->type_rus; ?>">
+					</div>
 					</div>
 					<div class="col-md-3">
 						<div class="form-group">
@@ -69,6 +69,7 @@
 						</div>
 					</div>
 				</div>
+				
 
 			</form>
 
@@ -129,6 +130,7 @@
 	CKEDITOR.replace( 'editor' );
 	CKEDITOR.replace( 'editor1' );
 	CKEDITOR.replace( 'editor2' );
+	CKEDITOR.replace( 'editor3' );
 </script>
 
 

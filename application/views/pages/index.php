@@ -17,7 +17,6 @@
 					</div>
 
 				</div>
-
 				<div class="col-lg-6 col-md-12 custom-background-color">
 					<?php if (!empty($page->text)): ?>
 							<h2 class="content-heading heading text-center dropdown-custom">

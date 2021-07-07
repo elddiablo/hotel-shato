@@ -14,12 +14,13 @@
 			$data = [
 
 				'table' => $table,
-				'id' => $id
+				'id' => $id,
+				'rooms' => $this->room_model->findAllRooms()
 
 			];
 
 			$this->load->view('admin/templates/header');
-            $this->load->view('admin/templates/navigation');
+            $this->load->view('admin/templates/navigation', $data);
 			$this->load->view('image_upload/upload_multiple', $data);
 			$this->load->view('admin/templates/footer');
 

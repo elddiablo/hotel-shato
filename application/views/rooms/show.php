@@ -48,7 +48,7 @@
 							<h2 class="content-heading heading text-center dropdown-custom-price">
 								Цена
 							<i class="fas fa-angle-down float-right mr-2"></i></h2>
-						<div class="content-text" id="price">Цена за 1 ночь: <span><?php echo $room->price; ?></span> грн</div>
+						<div class="content-text" id="price"><span><?php echo $room->price; ?></span></div>
 					<?php endif ?>
 
 					<?php if (!empty($points)): ?>

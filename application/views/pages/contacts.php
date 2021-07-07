@@ -24,46 +24,8 @@
 				</li>
 			</ul>
 		</div>
-	
 	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXijk4FnUFGmEcSAxs24DjHzaZmihO5Yg&callback=initMap"
     async defer></script> -->
-
-
 	</div>
-	<div class="row mt-5 mb-3">
-		<div class="col-12 custom-background-color mx-auto" style="border-radius: 15px">
-			<h4 class="text-center pt-3"><i class="far fa-envelope"></i> Оставьте запрос на бронирование прямо сейчас!</h4>
-			<!-- <p class="text-center">Вы можете запросить бронь номера написав нам письмо!</p> -->
-		<hr class="hr-theme">
-			<form action="<?= base_url(); ?>phone/leaveMessage" method="post">
-			<div class="row pb-3 px-2">
-				
-	                <div class="col-md-4">
-	                    <div class="form-group">
-	                        <input id="form_name" name="name" placeholder="Имя" required="required" type="text" class="form-control">
-	                    </div>
-	                </div>
-	                <div class="col-md-4">
-	                    <div class="form-group">
-	                        <input id="form_email" name="email" placeholder="Email" required="required" type="email" class="form-control">
-	                    </div>
-	                </div>
-	                <div class="col-md-4">
-	                    <div class="form-group">
-	                        <input id="form_subject" name="phone" placeholder="Телефон" type="tel" class="form-control" required="required">
-	                    </div>
-	                </div>
-	                <div class="col-md-12">
-	                    <div class="form-group">
-	                        <textarea id="form_message" name="message" placeholder="Тип номера, даты приезда и выезда, сколько человек и т.д." rows="4" required="required" class="form-control"></textarea>
-	                    </div>
-	                </div>
-
-	                <div class="col-md-12">
-	                   <button type="submit" class="btn btn-success float-right">Отправить</button>
-	                </div>
-				
-            </div>
-            </form>
-		</div>
+	
 	</div>

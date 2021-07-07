@@ -14,6 +14,8 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/shato-icon.ico" type="image/x-icon">  
+
 	<title>Отель "Шато" - Лучшие номера | Дешево</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/owl.carousel.min.css">
@@ -54,6 +56,11 @@
           </li>
           <li class="nav-item text-center">
               <a class="nav-link" href="<?php echo base_url(); ?>about">О нас</a>
+            <div class="li-shell">
+            </div>
+          </li>
+          <li class="nav-item text-center">
+              <a class="nav-link" href="<?php echo base_url(); ?>menu">Меню</a>
             <div class="li-shell">
             </div>
           </li>

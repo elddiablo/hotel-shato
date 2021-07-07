@@ -48,10 +48,11 @@
 			
 		}
 
+		/*
 		public function leaveMessage(){
 
 
-
+			
 			$number = $this->security->xss_clean($this->input->post('phone'));
 			$name = $this->security->xss_clean($this->input->post('name'));
 			$message = $this->security->xss_clean($this->input->post('message'));
@@ -89,6 +90,7 @@
 			
 			
 		}
+		*/
 
 		public function success_page(){
 

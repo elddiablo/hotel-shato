@@ -11,14 +11,17 @@
 		    </tr>
 		  </thead>
 		  <tbody>
+		   
 		  	<?php $i = 1; ?>
 		  	<?php foreach ($pages as $page): ?>
+			  <?php if($page['name'] != "menu") : ?>
 		  		<tr>
 			      <th scope="row"><?php echo $i; ?></th>
 			      <td><?php echo $page['name_rus']; ?></td>
 			      <td><a class="btn btn-warning" href="<?php echo base_url();?>pages/edit/<?php echo $page['name']; ?>">Изменить <i class="fa fa-fw fa-wrench"></i></a></td>
 			    </tr>
 			    <?php $i++; ?>
+			  <?php endif; ?>
 		  	<?php endforeach ?>
 		  </tbody>
 		</table>

@@ -1,102 +1,93 @@
-<?php 
-	
-
-
-	class Admin extends CI_Controller{
+<?php
 
 
 
-		public function index(){
+class Admin extends CI_Controller
+{
 
-			// Check if the user is not logged in.
-			if (!$this->user_model->isLoggedIn()) {
 
-				redirect('admin/login');
 
-			} else {
+	public function index()
+	{
 
-				$data = 	[
+		// Check if the user is not logged in.
+		if (!$this->user_model->isLoggedIn()) {
 
-						'title' => "Главная",
-						'rooms' => $this->room_model->findAllRooms(),
-						'pages' => $this->page_model->findAllPages()
-						
-					];
-			
-				$this->load->view('admin/templates/header');
+			redirect('admin/login');
+		} else {
 
-				$this->load->view('admin/templates/navigation');
+			$data = 	[
 
-				$this->load->view('admin/dashboard', $data);
+				'title' => "Главная",
+				'rooms' => $this->room_model->findAllRooms(),
+				'pages' => $this->page_model->findAllPages()
 
-				$this->load->view('admin/templates/footer');
+			];
+
+			$this->load->view('admin/templates/header');
+
+			$this->load->view('admin/templates/navigation', $data);
+
+			$this->load->view('admin/dashboard', $data);
+
+			$this->load->view('admin/templates/footer');
+		}
+	}
+
+	public function show($table)
+	{
+
+		// Check if Logged In
+		if (!$this->user_model->isLoggedIn()) {
+			redirect('admin/login');
+		} else {
+
+			$data['table'] = $table;
+			$data['rooms'] = $this->room_model->findAllRooms();
+
+			if ($table == 'pages') {
+
+				$data['pages'] = $this->admin_model->findContent($table);
+				$data['points'] = $this->admin_model->findContentPoints();
+			} else if ($table == 'rooms') {
+
+				$data['rooms'] = $this->admin_model->findContent($table);
 			}
 
+
+
+
+			$this->load->view('admin/templates/header');
+			$this->load->view('admin/templates/navigation', $data);
+			$this->load->view('admin/show', $data);
+			$this->load->view('admin/templates/footer');
 		}
+	}
 
-		public function show($table) {
-
-			// Check if Logged In
-			if (!$this->user_model->isLoggedIn()) {
-				redirect('admin/login');
-			} else {	
-
-				$data['table'] = $table;
-
-				if ($table == 'pages') {	
-
-					$data['pages'] = $this->admin_model->findContent($table);	
-					$data['points'] = $this->admin_model->findContentPoints();
-						
-
-				} else if($table == 'rooms'){
-
-					$data['rooms'] = $this->admin_model->findContent($table);
-
-					
-
-				}
-				
-				
-				
-
-				$this->load->view('admin/templates/header');
-				$this->load->view('admin/templates/navigation');
-				$this->load->view('admin/show', $data);
-				$this->load->view('admin/templates/footer');
-
-
-				
-
-			}
-			
-
-		}
-
-		public function login(){
+	public function login()
+	{
 
 
 
 
 
-			if ($this->user_model->isLoggedIn()) {
+		if ($this->user_model->isLoggedIn()) {
 
-				redirect('admin/index');
-				// header('location: http://hotel-shato.od.ua/admin/index');
-				// echo base_url();
+			redirect('admin/index');
+			// header('location: http://hotel-shato.od.ua/admin/index');
+			// echo base_url();
 
-			} else {
+		} else {
 
-				$this->form_validation->set_rules('username', 'Username', 'required');
+			$this->form_validation->set_rules('username', 'Username', 'required');
 
-				$this->form_validation->set_rules('password', 'Password', 'required');
+			$this->form_validation->set_rules('password', 'Password', 'required');
 
 			if ($this->form_validation->run() === FALSE) {
 
 				$this->load->view('admin/templates/header');
 				$this->load->view('admin/login');
 				$this->load->view('admin/templates/footer');
-
 			} else {
 				// Get and Sanitize input 
 				$password = $this->security->xss_clean($this->input->post('password'));
@@ -127,37 +118,35 @@
 					redirect('admin/login');
 					// redirect('http://hotel-shato.od.ua/admin/login');
 				}
-
 			}
-		 }
+		}
 	}
 
-	public function logout(){
+	public function logout()
+	{
 
 
-			$this->session->unset_userdata('username');
-			$this->session->unset_userdata('password');
+		$this->session->unset_userdata('username');
+		$this->session->unset_userdata('password');
 
-			redirect('admin/login');
-		}
+		redirect('admin/login');
+	}
 
-		
-		public function hashPassword($password){
+
+	public function hashPassword($password)
+	{
 		// HAsh format
-			$hash_format = "$2y$10$";
+		$hash_format = "$2y$10$";
 
 		// could be anything you want
-			$salt = "peakyBlindersAreawesom";
+		$salt = "peakyBlindersAreawesom";
 
 		// Combining
-			$hash_and_salt = $hash_format. $salt;
+		$hash_and_salt = $hash_format . $salt;
 
 		// Putting new hashed password instead of the old one
-			$password = crypt($password, $hash_and_salt);
+		$password = crypt($password, $hash_and_salt);
 
 		return $password;
 	}
-		
-}	
-
-	
+}

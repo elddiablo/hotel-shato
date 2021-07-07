@@ -10,9 +10,11 @@ class Upload extends CI_Controller {
                 redirect('admin/login');
 
                 } else {
+                        $data = [];
+                        $data['rooms'] = $this->room_model->findAllRooms();
 
                         $this->load->view('admin/templates/header');
-                        $this->load->view('admin/templates/navigation');
+                        $this->load->view('admin/templates/navigation', $data);
                         $this->load->view('image_upload/upload_form', array('error' => ' ', 'table' => $table, 'id' => $id ));
                         $this->load->view('admin/templates/footer');
 
@@ -39,9 +41,11 @@ class Upload extends CI_Controller {
                 if ( ! $this->upload->do_upload('userfile'))
                         {
                                 $error = array('error' => $this->upload->display_errors());
+                                $data = [];
+                                $data['rooms'] = $this->room_model->findAllRooms();
 
                                 $this->load->view('admin/templates/header');
-                                $this->load->view('admin/templates/navigation');
+                                $this->load->view('admin/templates/navigation', $data);
                                 $this->load->view('image_upload/upload_form', $error);
                                 $this->load->view('admin/templates/footer');
                         }

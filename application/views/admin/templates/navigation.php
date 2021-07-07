@@ -25,9 +25,6 @@
               <a href="<?php echo base_url(); ?>pages/edit/territory">Территория</a>
             </li>
             <li>
-              <a href="<?php echo base_url(); ?>pages/edit/steamroom">Баня</a>
-            </li>
-            <li>
               <a href="<?php echo base_url(); ?>pages/edit/occasions">Мероприятия</a>
             </li>
             <li>
@@ -44,19 +41,12 @@
             <span class="nav-link-text">Номера</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents2">
-            <li>
-              <a href="<?php echo base_url(); ?>rooms/edit/standart">Стандарт</a>
-            </li>
-            <li>
-              <a href="<?php echo base_url(); ?>rooms/edit/standart_plus">Стандарт+</a>
-            </li>
-            <li>
-              <a href="<?php echo base_url(); ?>rooms/edit/semi_prem">Полу-Люкс</a>
-            </li>
-            <li>
-              <a href="<?php echo base_url(); ?>rooms/edit/prem">Люкс</a>
-            </li>
-          </ul>
+           <?php foreach ( $rooms as $room ) { ?>
+              <li>
+                <a href="<?php echo base_url(); ?>rooms/edit/<?php echo $room['type']; ?>"><?php echo $room['type_rus']; ?></a>
+              </li>
+           <?php } ?>  
+          </ul> 
         </li>
         
         
