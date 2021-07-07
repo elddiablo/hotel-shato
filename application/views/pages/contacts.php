@@ -24,8 +24,6 @@
 				</li>
 			</ul>
 		</div>
-	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXijk4FnUFGmEcSAxs24DjHzaZmihO5Yg&callback=initMap"
-    async defer></script> -->
 	</div>
 	
 	</div>

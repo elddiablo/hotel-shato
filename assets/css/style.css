@@ -1,4 +1,16 @@
+
+
+/* steamroom */
+.shell .cat_description {
+	font-size: 1rem;
+	padding: 20px 30px;
+}
+
+
+
 /* ================== START OF STANDART ====================================================== */
+
+
 
 html body .post-body {
 	margin: 2em 0;
