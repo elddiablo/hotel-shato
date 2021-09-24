@@ -49,7 +49,7 @@
               </div> -->
 		<div class="col-md-4 col-sm-12 col-12 text-center d-flex align-items-center flex-column pt-5 pb-3">
 			<img src="<?php echo base_url("assets/img/menu_png.png") ?>" alt="" style="height: 160px;">
-			<p class="mt-3">Ознакомтесь с нашим меню и что у нас есть в наличии, тут должен быть текст и так далее....</p>
+			<p class="mt-3">Ознакомтесь с нашим меню и что у нас есть в наличии.</p>
 			<a href="<?php echo base_url(); ?>menu" class="btn-warning btn">Посмотреть меню</a>
 		</div>
 	</div>
